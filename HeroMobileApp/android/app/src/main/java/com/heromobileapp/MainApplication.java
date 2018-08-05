@@ -1,4 +1,4 @@
-package com.moonlightmobileapp;
+package com.heromobileapp;
 
 import android.app.Application;
 

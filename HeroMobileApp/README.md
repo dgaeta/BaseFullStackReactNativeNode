@@ -1,3 +1,5 @@
 #README.md
 
-react-native start --config ~/Sandbox/Moonlight/MoonlightMobileApp/rn-cli.config.js
+yarn start 
+or
+react-native start --config ~/Sandbox/Hero/HeroMobileApp/rn-cli.config.js
