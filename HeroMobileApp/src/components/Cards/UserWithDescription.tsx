@@ -46,16 +46,18 @@ const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'center',
     alignContent: 'stretch'
   },
   rowCard: {
     flex: 1,
     flexDirection: 'column',
+    borderRadius: 10,
     backgroundColor: 'blue',
-    alignItems: 'stretch',
+    alignItems: 'center',
     alignContent: 'stretch',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    margin: 5
   },
   container: {
     flex: 1,

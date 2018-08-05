@@ -38,38 +38,17 @@ UserWithActionButtonState
         <View style={styles.cardContainer}>  
           <View style={styles.rowCard}>
             
-              <View style={{
-                flex: 4,
-                alignItems: 'stretch',
-                alignContent: 'stretch',
-                backgroundColor: 'yellow',
-                alignSelf: 'center'
-              }}
+              <View style={styles.cardContent}
               >
-                <View style={{
-                  display: 'flex',
-                  flex: 2,
-                  backgroundColor: 'green',
-                  alignItems: 'stretch',
-                  alignContent: 'stretch'
-                }}>
+                <View style={styles.profileImageSection}>
                   <Text>{this.props.profileImageUrl}</Text> 
                 </View>
-                <View style={{
-                  flex: 1,
-                  backgroundColor: 'red'
-                }}>
+                <View style={styles.userNameSection}>
                   <Text>{this.props.username}</Text>
                 </View>
 
             </View>
-            <View style={{
-              flex: 1,
-              alignSelf: 'center',
-              backgroundColor: 'orange',
-              alignItems: 'stretch',
-              alignContent: 'stretch'
-            }}>
+            <View style={styles.buttonSection}>
               <Text>{this.props.majorActionTitle}</Text>
               <Text>{this.props.minorActionTitle}</Text>
             </View>
@@ -84,12 +63,14 @@ UserWithActionButtonState
 const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'stretch',
     alignContent: 'stretch'
   },
   rowCard: {
     flex: 1,
+    borderRadius: 10,
     flexDirection: 'row',
     backgroundColor: 'blue',
     alignItems: 'stretch',
@@ -98,9 +79,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    borderRadius: 10,
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
+    margin: 5
+  },
+  cardContent: {
+    flex: 4,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    alignItems: 'center',
+    alignContent: 'stretch',
+    backgroundColor: 'yellow',
+    alignSelf: 'center'
+  },
+  profileImageSection: {
+    display: 'flex',
+    // borderRadius: 10,
+    flex: 2,
+    // backgroundColor: 'green',
+    alignItems: 'stretch',
+    alignContent: 'stretch'
+  },
+  userNameSection: {
+    flex: 1,
+    // borderRadius: 10,
+    // backgroundColor: 'red'
+  },
+  buttonSection: {
+    flex: 1,
+    alignSelf: 'center',
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    alignContent: 'stretch'
   }
 });
