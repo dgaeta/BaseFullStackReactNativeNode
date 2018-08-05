@@ -109,6 +109,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
           {
             upcomingCallsData.map((callData: UserWithDescriptionProps, index: number) => {
               return <UserWithDescription
+                key={index}
                 profileImageUrl={'url'}
                 username={callData.username}
                 description={callData.description}
@@ -122,6 +123,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
           {
             pastCallsData.map((callData: UserWithDescriptionProps, index: number) => {
               return <UserWithDescription
+                key={index}
                 profileImageUrl={'url'}
                 username={callData.username}
                 description={callData.description}

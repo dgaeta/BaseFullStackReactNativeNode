@@ -52,8 +52,22 @@ UserWithActionButtonState
 
             </View>
             <View style={styles.buttonSection}>
-              <Text>{this.props.majorActionTitle}</Text>
-              <Text>{this.props.minorActionTitle}</Text>
+              <View style={styles.mainButton}>
+                <Button
+                  onPress={() => {console.log('Main action pressed')}}
+                  title={this.props.majorActionTitle}
+                  color='white'
+                  accessibilityLabel="Learn more about this purple button"
+                />
+              </View>
+              <View style={styles.secondaryButton}>
+                <Button
+                  onPress={() => {console.log('Minor action pressed')}}
+                  title={this.props.minorActionTitle}
+                  color='white'
+                  accessibilityLabel="Learn more about this purple button"
+                />
+              </View>
             </View>
 
           </View>
@@ -120,6 +134,18 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red'
   },
   buttonSection: {
+    flex: 1,
+    backgroundColor: 'green',
+    alignSelf: 'center',
+    alignItems: 'center'
+  },
+  mainButton: {
+    flex: 2,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  secondaryButton: {
     flex: 1,
     alignSelf: 'center',
     backgroundColor: 'orange',
