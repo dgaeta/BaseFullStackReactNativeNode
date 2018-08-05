@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'blue',
     alignItems: 'stretch',
-    alignContent: 'stretch'
+    alignContent: 'stretch',
+    width: 100
   },
   container: {
     flex: 1,

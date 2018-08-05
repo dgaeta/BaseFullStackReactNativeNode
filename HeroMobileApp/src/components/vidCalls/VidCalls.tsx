@@ -8,7 +8,7 @@
 
 import React from 'react'
 import { Component } from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, FlatList} from 'react-native';
 
 import 
   UserWithActionButton,
@@ -37,21 +37,25 @@ const hardCodedNowCall: UserWithActionButtonProps = {
 
 const upcomingCallsData: UserWithDescriptionProps[] = [
   {
+    key: '1',
     username: 'Danny Dedication',
     description: 'in 2 hours',
     profileImageUrl: 'test'
   },
   {
+    key: '2',
     username: 'Danny Dedication',
     description: 'in 4 hours',
     profileImageUrl: 'test'
   },
   {
+    key: '3',
     username: 'Danny Dedication',
     description: 'in 6 hours',
     profileImageUrl: 'test'
   },
   {
+    key: '4',
     username: 'Danny Dedication',
     description: 'in 1 day',
     profileImageUrl: 'test'
@@ -60,21 +64,25 @@ const upcomingCallsData: UserWithDescriptionProps[] = [
 
 const pastCallsData: UserWithDescriptionProps[] = [
   {
+    key: '1',
     username: 'Danny Dedication',
     description: '1 day ago',
     profileImageUrl: 'test'
   },
   {
+    key: '2',
     username: 'Danny Dedication',
     description: '1 day ago',
     profileImageUrl: 'test'
   },
   {
+    key: '3',
     username: 'Danny Dedication',
     description: '2 days ago',
     profileImageUrl: 'test'
   },
   {
+    key: '4',
     username: 'Danny Dedication',
     description: '3 days ago',
     profileImageUrl: 'test'
@@ -106,30 +114,36 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
         
         <Text>Upcoming</Text>
         <View style={styles.cardContainer}> 
-          {
-            upcomingCallsData.map((callData: UserWithDescriptionProps, index: number) => {
-              return <UserWithDescription
-                key={index}
-                profileImageUrl={'url'}
-                username={callData.username}
-                description={callData.description}
-              />
-            })
-          }
+          <FlatList 
+            horizontal={true}
+            data={upcomingCallsData}
+            renderItem={({item, index}) => (
+              <UserWithDescription
+                  key={item.key}
+                  profileImageUrl={'url'}
+                  username={item.username}
+                  description={item.description}
+                />
+              )
+            }
+          />
         </View>
 
         <Text>Past</Text>
         <View style={styles.cardContainer}> 
-          {
-            pastCallsData.map((callData: UserWithDescriptionProps, index: number) => {
-              return <UserWithDescription
-                key={index}
-                profileImageUrl={'url'}
-                username={callData.username}
-                description={callData.description}
-              />
-            })
-          }
+          <FlatList 
+            horizontal={true}
+            data={pastCallsData}
+            renderItem={({item, index}) => (
+              <UserWithDescription
+                  key={item.key}
+                  profileImageUrl={'url'}
+                  username={item.username}
+                  description={item.description}
+                />
+              )
+            }
+          />
         </View>
       </View>
     );

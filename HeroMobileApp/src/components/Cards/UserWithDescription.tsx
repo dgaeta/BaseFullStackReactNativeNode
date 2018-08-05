@@ -11,6 +11,7 @@ import { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
 export interface UserWithDescriptionProps {
+  key: string,
   username: string;
   profileImageUrl: string;
   description: string;
@@ -68,10 +69,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'blue',
     alignItems: 'center',
-    alignContent: 'stretch',
     flexWrap: 'wrap',
     margin: 5,
-    fontSize: 10
+    fontSize: 10,
+    width: 100
   },
   container: {
     flex: 1,
