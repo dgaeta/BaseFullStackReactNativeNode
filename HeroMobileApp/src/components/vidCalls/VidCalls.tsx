@@ -11,6 +11,7 @@ import { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 
 import UserWithActionButton from '../Cards/UserWithActionButton';
+import UserWithDescription from '../Cards/UserWithDescription';
 
 export interface IVidCallsProps {
 }
@@ -46,34 +47,50 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
         
         <Text>Upcoming</Text>
         <View style={styles.cardContainer}>  
-          <View style={styles.rowCard}>
-            <Text> This is the first item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the second item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the third item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the fourth item</Text>
-          </View>
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the first card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the second card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the third card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the fourth card'}
+          />
         </View>
 
         <Text>Past</Text>
         <View style={styles.cardContainer}>  
-          <View style={styles.rowCard}>
-            <Text> This is the first item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the second item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the third item</Text>
-          </View>
-          <View style={styles.rowCard}>
-            <Text> This is the fourth item</Text>
-          </View>
+        <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the first card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the second card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the third card'}
+          />
+          <UserWithDescription
+            profileImageUrl={'url'}
+            username={'Danny Dedication'}
+            description={'This is the fourth card'}
+          />
         </View>
       </View>
     );
