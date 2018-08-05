@@ -12,7 +12,7 @@ import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
 export interface UserWithActionButtonProps {
   username: string;
-  profileImageUrl: string;
+  profileImagePath: string;
   majorActionTitle: string;
   minorActionTitle: string;
 }

@@ -10,8 +10,14 @@ import React from 'react'
 import { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
 
-import UserWithActionButton from '../Cards/UserWithActionButton';
-import UserWithDescription from '../Cards/UserWithDescription';
+import 
+  UserWithActionButton,
+  { UserWithActionButtonProps }
+from '../Cards/UserWithActionButton';
+import 
+  UserWithDescription,
+  { UserWithDescriptionProps }
+from '../Cards/UserWithDescription';
 
 export interface IVidCallsProps {
 }
@@ -21,6 +27,59 @@ export interface IVidCallsState {
   nowCall: any | undefined;
   pastCalls: any[];
 }
+
+const hardCodedNowCall: UserWithActionButtonProps = {
+  username: 'DannyDedication',
+  profileImagePath: '../../assets/img/doge.png',
+  majorActionTitle: 'Join',
+  minorActionTitle: 'Cancel'
+};
+
+const upcomingCallsData: UserWithDescriptionProps[] = [
+  {
+    username: 'Danny Dedication',
+    description: 'in 2 hours',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: 'in 4 hours',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: 'in 6 hours',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: 'in 1 day',
+    profileImageUrl: 'test'
+  }
+];
+
+const pastCallsData: UserWithDescriptionProps[] = [
+  {
+    username: 'Danny Dedication',
+    description: '1 day ago',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: '1 day ago',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: '2 days ago',
+    profileImageUrl: 'test'
+  },
+  {
+    username: 'Danny Dedication',
+    description: '3 days ago',
+    profileImageUrl: 'test'
+  }
+];
 
 export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> {
 
@@ -39,58 +98,36 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
       <View style={styles.container}>
         <Text>Now</Text>
         <UserWithActionButton 
-          username={'Danny Dedication'}
-          profileImageUrl={'http://myProfPic.com/DannyDedication'}
-          majorActionTitle={'Join'}
-          minorActionTitle={'Cancel'}
+          username={hardCodedNowCall.username}
+          profileImagePath={hardCodedNowCall.profileImagePath}
+          majorActionTitle={hardCodedNowCall.majorActionTitle}
+          minorActionTitle={hardCodedNowCall.minorActionTitle}
         />
         
         <Text>Upcoming</Text>
-        <View style={styles.cardContainer}>  
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the first card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the second card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the third card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the fourth card'}
-          />
+        <View style={styles.cardContainer}> 
+          {
+            upcomingCallsData.map((callData: UserWithDescriptionProps, index: number) => {
+              return <UserWithDescription
+                profileImageUrl={'url'}
+                username={callData.username}
+                description={callData.description}
+              />
+            })
+          }
         </View>
 
         <Text>Past</Text>
-        <View style={styles.cardContainer}>  
-        <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the first card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the second card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the third card'}
-          />
-          <UserWithDescription
-            profileImageUrl={'url'}
-            username={'Danny Dedication'}
-            description={'This is the fourth card'}
-          />
+        <View style={styles.cardContainer}> 
+          {
+            pastCallsData.map((callData: UserWithDescriptionProps, index: number) => {
+              return <UserWithDescription
+                profileImageUrl={'url'}
+                username={callData.username}
+                description={callData.description}
+              />
+            })
+          }
         </View>
       </View>
     );

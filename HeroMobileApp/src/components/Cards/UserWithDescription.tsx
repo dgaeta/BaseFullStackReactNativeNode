@@ -38,27 +38,29 @@ UserWithDescriptionState
           style={styles.image}
           source={require('../../assets/img/doge.png')}
         />
-        <Text>{this.props.username}</Text>
-        <Text>{this.props.description}</Text>
+        <Text style={styles.font}>{this.props.username}</Text>
+        <Text style={styles.font}>{this.props.description}</Text>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  font: {
+    color: 'white'
+  },
   image: {
     flex: 1,
-    borderRadius: 30,
+    borderRadius: 20,
     resizeMode: 'cover',
     backgroundColor: 'red',
-    width: 60,
-    height: 60
+    width: 40,
+    height: 40
   },
   cardContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    alignContent: 'stretch'
   },
   rowCard: {
     flex: 1,
@@ -68,7 +70,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'stretch',
     flexWrap: 'wrap',
-    margin: 5
+    margin: 5,
+    fontSize: 10
   },
   container: {
     flex: 1,
