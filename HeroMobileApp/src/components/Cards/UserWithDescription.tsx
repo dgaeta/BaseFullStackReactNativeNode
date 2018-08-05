@@ -8,7 +8,7 @@
 
 import React from 'react'
 import { Component } from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
 export interface UserWithDescriptionProps {
   username: string;
@@ -34,7 +34,10 @@ UserWithDescriptionState
   render() {
     return (
       <View style={styles.rowCard}>
-        <Text>{this.props.profileImageUrl}</Text>
+        <Image
+          style={styles.image}
+          source={require('../../assets/img/doge.png')}
+        />
         <Text>{this.props.username}</Text>
         <Text>{this.props.description}</Text>
       </View>
@@ -43,6 +46,14 @@ UserWithDescriptionState
 }
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    borderRadius: 30,
+    resizeMode: 'cover',
+    backgroundColor: 'red',
+    width: 60,
+    height: 60
+  },
   cardContainer: {
     flex: 1,
     flexDirection: 'row',

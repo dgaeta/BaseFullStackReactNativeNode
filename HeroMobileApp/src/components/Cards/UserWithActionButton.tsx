@@ -8,7 +8,7 @@
 
 import React from 'react'
 import { Component } from 'react';
-import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
 export interface UserWithActionButtonProps {
   username: string;
@@ -41,7 +41,10 @@ UserWithActionButtonState
               <View style={styles.cardContent}
               >
                 <View style={styles.profileImageSection}>
-                  <Text>{this.props.profileImageUrl}</Text> 
+                <Image
+                  style={styles.image}
+                  source={require('../../assets/img/doge.png')}
+                />
                 </View>
                 <View style={styles.userNameSection}>
                   <Text>{this.props.username}</Text>
@@ -86,6 +89,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
     margin: 5
   },
+  image: {
+    flex: 1,
+    borderRadius: 45,
+    resizeMode: 'cover',
+    backgroundColor: 'red',
+    width: 100,
+    height: 100
+  },
   cardContent: {
     flex: 4,
     borderTopLeftRadius: 10,
@@ -97,7 +108,7 @@ const styles = StyleSheet.create({
   },
   profileImageSection: {
     display: 'flex',
-    // borderRadius: 10,
+    borderRadius: 30,
     flex: 2,
     // backgroundColor: 'green',
     alignItems: 'stretch',
