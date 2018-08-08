@@ -8,7 +8,16 @@
 
 import React from 'react'
 import { Component } from 'react';
-import {Platform, StyleSheet, Text, View, Button, FlatList} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  Modal,
+  TouchableHighlight
+} from 'react-native';
 
 import 
   UserWithActionButton,
@@ -18,6 +27,7 @@ import
   UserWithDescription,
   { UserWithDescriptionProps }
 from '../Cards/UserWithDescription';
+import CallDetail from './CallDetail';
 
 export interface IVidCallsProps {
 }
@@ -26,6 +36,14 @@ export interface IVidCallsState {
   upcomingCalls: any[];
   nowCall: any | undefined;
   pastCalls: any[];
+  modalContent: JSX.Element | undefined
+}
+
+export enum CallType {
+  nowCall = 0,
+  upcomingCall = 1,
+  pastCall = 2
+
 }
 
 const hardCodedNowCall: UserWithActionButtonProps = {
@@ -97,8 +115,49 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
     this.state = {
       upcomingCalls: [],
       nowCall: undefined,
-      pastCalls: []
+      pastCalls: [],
+      modalContent: undefined
     };
+  }
+
+  private _removeUpcomingModal(): void {
+    this.setState({ modalContent: undefined });
+  }
+
+  private _setModalContent(callType: CallType, callData: any): void {
+    switch (callType) {
+      case CallType.nowCall:
+        break;
+      
+      case CallType.upcomingCall:
+        break;
+      
+      case CallType.pastCall:
+        break;
+      
+      default:
+        break;
+    }
+
+    const callDetailComponent: JSX.Element = (
+      <View style={styles.modalContainer}>
+          <CallDetail
+            key={'1'}
+            username={'Danny Dedication'}
+            description={'This a call detail bro.'}
+            profileImageUrl={'test'}
+          />
+        <TouchableHighlight
+          onPress={() => {
+            this._removeUpcomingModal();
+          }}>
+          <Text>Hide Modal</Text>
+        </TouchableHighlight>
+      </View>
+      
+    );
+
+    this.setState({ modalContent: callDetailComponent })
   }
 
   render() {
@@ -118,13 +177,19 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
             horizontal={true}
             data={upcomingCallsData}
             renderItem={({item, index}) => (
-              <UserWithDescription
+              <TouchableHighlight
+                onPress={() => {
+                  this._setModalContent(CallType.upcomingCall, {});
+                }}
+              >
+                <UserWithDescription
                   key={item.key}
                   profileImageUrl={'url'}
                   username={item.username}
                   description={item.description}
                 />
-              )
+              </TouchableHighlight>
+            )
             }
           />
         </View>
@@ -135,16 +200,30 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
             horizontal={true}
             data={pastCallsData}
             renderItem={({item, index}) => (
-              <UserWithDescription
-                  key={item.key}
-                  profileImageUrl={'url'}
-                  username={item.username}
-                  description={item.description}
-                />
-              )
-            }
+              <TouchableHighlight
+                onPress={() => {
+                  this._setModalContent(CallType.pastCall, {});
+                }}
+              >
+                <UserWithDescription
+                    key={item.key}
+                    profileImageUrl={'url'}
+                    username={item.username}
+                    description={item.description}
+                  />
+              </TouchableHighlight>
+            )}
           />
         </View>
+
+        
+        <Modal
+          visible={this.state.modalContent !== undefined}
+          animationType={'fade'}
+          transparent={false}
+          >
+            {this.state.modalContent}
+        </Modal>
       </View>
     );
   }
@@ -169,6 +248,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    paddingTop: 100,
+    paddingBottom: 100
+  },
+  modalContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
     paddingTop: 100,
