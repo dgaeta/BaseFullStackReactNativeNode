@@ -28,6 +28,7 @@ import
   { UserWithDescriptionProps }
 from '../Cards/UserWithDescription';
 import CallDetail from './CallDetail';
+import CircleButton from '../Buttons/CircleButton';
 
 export interface IVidCallsProps {
 }
@@ -39,11 +40,11 @@ export interface IVidCallsState {
   modalContent: JSX.Element | undefined
 }
 
-export enum CallType {
-  nowCall = 0,
-  upcomingCall = 1,
-  pastCall = 2
-
+export const enum ModalContentType {
+  NowCall = 0,
+  UpcomingCall = 1,
+  PastCall = 2,
+  AddNewCall = 3
 }
 
 const hardCodedNowCall: UserWithActionButtonProps = {
@@ -124,21 +125,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
     this.setState({ modalContent: undefined });
   }
 
-  private _setModalContent(callType: CallType, callData: any): void {
-    switch (callType) {
-      case CallType.nowCall:
-        break;
-      
-      case CallType.upcomingCall:
-        break;
-      
-      case CallType.pastCall:
-        break;
-      
-      default:
-        break;
-    }
-
+  private _setModalContent(modalType: ModalContentType, callData: any): void {
     const callDetailComponent: JSX.Element = (
       <View style={styles.modalContainer}>
           <CallDetail
@@ -157,7 +144,71 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
       
     );
 
-    this.setState({ modalContent: callDetailComponent })
+    const addNewCallComponent: JSX.Element = (
+      <View style={styles.modalContainer}>
+        <Text>I am looking to</Text>
+        <View style={styles.callOptions}>
+          <Text>Give advice</Text>
+          <Text>Get advice</Text>
+        </View>
+
+        <Text>From someone</Text>
+        <View style={styles.callOptions}>
+          <Text>My age</Text>
+          <Text>Older</Text>
+          <Text>Younger</Text>
+        </View>
+
+        <Text>At</Text>
+        <View style={styles.callOptions}>
+          <Text>Now</Text>
+          <Text>Today</Text>
+          <Text>Tomorrow</Text>
+        </View>
+        <View style={styles.callOptions}>
+          <Text>Morning</Text>
+          <Text>Afternoon</Text>
+          <Text>Night</Text>
+        </View>
+
+        <View style={{
+          flex: 1,
+          flexDirection: 'row',
+        }}>
+          <View style={{justifyContent: 'space-between'}}>
+            <CircleButton title={'✓'} onPressHandler={() => {
+              this.setState({ modalContent: undefined });
+            }} />
+          </View>
+          <View style={{justifyContent: 'space-between'}}>
+            <CircleButton title={'x'} onPressHandler={() => {
+              this.setState({ modalContent: undefined });
+            }} />
+          </View>
+        </View>
+      </View>
+    );
+
+    switch (modalType) {
+      case ModalContentType.NowCall:
+        this.setState({ modalContent: callDetailComponent })
+        break;
+      
+      case ModalContentType.UpcomingCall:
+        this.setState({ modalContent: callDetailComponent })
+        break;
+      
+      case ModalContentType.PastCall:
+        this.setState({ modalContent: callDetailComponent })
+        break;
+      
+      case ModalContentType.AddNewCall:
+        this.setState({ modalContent: addNewCallComponent })
+        break;
+
+      default:
+        break;
+    }
   }
 
   render() {
@@ -179,7 +230,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
             renderItem={({item, index}) => (
               <TouchableHighlight
                 onPress={() => {
-                  this._setModalContent(CallType.upcomingCall, {});
+                  this._setModalContent(ModalContentType.UpcomingCall, {});
                 }}
               >
                 <UserWithDescription
@@ -202,7 +253,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
             renderItem={({item, index}) => (
               <TouchableHighlight
                 onPress={() => {
-                  this._setModalContent(CallType.pastCall, {});
+                  this._setModalContent(ModalContentType.PastCall, {});
                 }}
               >
                 <UserWithDescription
@@ -215,7 +266,10 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
             )}
           />
         </View>
-
+        
+        <CircleButton title={'+'} onPressHandler={() => {
+          this._setModalContent(ModalContentType.AddNewCall, {});
+        }} />
         
         <Modal
           visible={this.state.modalContent !== undefined}
@@ -230,6 +284,30 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
 }
 
 const styles = StyleSheet.create({
+  callOptions: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  circleText: {
+    fontSize: 32
+  },
+  circleContainer: {
+    flex: 1,
+    // backgroundColor: 'red',
+    justifyContent: 'center'
+  },
+  circleButton: {
+    flexDirection: 'row',
+    height: 70,
+    width: 70,
+    backgroundColor: 'yellow',
+    borderColor: 'grey',
+    borderWidth: 3,
+    borderStyle: 'solid',
+    borderRadius: 35,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   cardContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -250,8 +328,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    paddingTop: 100,
-    paddingBottom: 100
+    paddingTop: 40,
+    paddingBottom: 50
   },
   modalContainer: {
     flex: 1,
