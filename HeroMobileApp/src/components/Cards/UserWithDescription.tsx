@@ -51,12 +51,11 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   image: {
-    flex: 1,
-    borderRadius: 20,
+    borderRadius: 25,
     resizeMode: 'cover',
     backgroundColor: 'red',
-    width: 40,
-    height: 40
+    width: 50,
+    height: 50
   },
   cardContainer: {
     flex: 1,

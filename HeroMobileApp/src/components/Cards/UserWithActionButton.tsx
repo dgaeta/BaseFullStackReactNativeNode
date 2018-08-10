@@ -105,12 +105,11 @@ const styles = StyleSheet.create({
     margin: 5
   },
   image: {
-    flex: 1,
-    borderRadius: 45,
+    borderRadius: 40,
     resizeMode: 'cover',
     backgroundColor: 'red',
-    width: 100,
-    height: 100
+    width: 80,
+    height: 80
   },
   cardContent: {
     flex: 4,
