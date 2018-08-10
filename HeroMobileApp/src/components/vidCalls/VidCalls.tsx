@@ -219,7 +219,7 @@ export default class VidCalls extends Component<IVidCallsProps, IVidCallsState> 
         
         <Modal
           visible={this.state.modalContent !== undefined}
-          animationType={'fade'}
+          animationType={'slide'}
           transparent={false}
           >
             {this.state.modalContent}
