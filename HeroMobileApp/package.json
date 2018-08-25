@@ -7,12 +7,26 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.116",
+    "Buffer": "^0.0.0",
+    "axios": "^0.18.0",
+    "fetchival": "^0.3.3",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.10",
     "react": "16.4.1",
-    "react-native": "0.56.0"
+    "react-native": "0.56.0",
+    "react-redux": "^5.0.7",
+    "react-thunk": "^1.0.0",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jwt-decode": "^2.2.1",
     "@types/react": "^16.4.6",
     "@types/react-native": "^0.56.4",
+    "@types/react-redux": "^6.0.6",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "babel-jest": "23.4.0",
     "babel-preset-react-native": "^5",
     "jest": "23.4.1",
@@ -22,5 +36,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }

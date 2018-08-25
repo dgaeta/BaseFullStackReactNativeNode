@@ -9,7 +9,11 @@
 import React from 'react'
 import { Component } from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import VidCalls from './components/vidCalls/VidCalls';
+import { Provider } from 'react-redux';
+
+import VidCalls from './scenes/vidCalls/VidCalls';
+import Register from './scenes/auth/Register';
+import configureStore from './store';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -24,7 +28,11 @@ const APP_TITLE: string = 'Hero';
 export default class App extends Component<Props> {
   render() {
     return (
-      <VidCalls />
+      <View style={styles.container}>
+        <Provider store = { configureStore() }>
+          <Register />
+        </Provider>
+      </View>
     );
   }
 }
