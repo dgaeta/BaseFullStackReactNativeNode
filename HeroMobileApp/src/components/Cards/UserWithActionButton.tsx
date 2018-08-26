@@ -41,10 +41,10 @@ UserWithActionButtonState
               <View style={styles.cardContent}
               >
                 <View style={styles.profileImageSection}>
-                <Image
+                {/* <Image
                   style={styles.image}
                   source={require('../../assets/img/doge.png')}
-                />
+                /> */}
                 </View>
                 <View style={styles.userNameSection}>
                   <Text>{this.props.username}</Text>

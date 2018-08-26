@@ -22,13 +22,14 @@ import {
 import 
   UserWithActionButton,
   { UserWithActionButtonProps }
-from '../Cards/UserWithActionButton';
+from '../../Cards/UserWithActionButton';
 import 
   UserWithDescription,
   { UserWithDescriptionProps }
-from '../Cards/UserWithDescription';
+from '../../Cards/UserWithDescription';
 import CallDetail from './CallDetail';
-import CircleButton from '../Buttons/CircleButton';
+import CircleButton from '../../Buttons/CircleButton';
+import { ModalContentType } from '../../ModalContentType';
 
 export interface IVidCallsProps {
 }
@@ -38,13 +39,6 @@ export interface IVidCallsState {
   nowCall: any | undefined;
   pastCalls: any[];
   modalContent: JSX.Element | undefined
-}
-
-export const enum ModalContentType {
-  NowCall = 0,
-  UpcomingCall = 1,
-  PastCall = 2,
-  AddNewCall = 3
 }
 
 const hardCodedNowCall: UserWithActionButtonProps = {

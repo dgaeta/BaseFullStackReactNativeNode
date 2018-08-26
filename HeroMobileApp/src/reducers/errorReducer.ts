@@ -1,14 +1,14 @@
 // errorReducer.js
 
-import { GET_ERRORS } from '../actions/types';
+// import { GET_ERRORS } from '../actions/actionTypes';
 
-const initialState = {};
+// const initialState = {};
 
-export default function(state = initialState, action: any ) {
-  switch(action.type) {
-    case GET_ERRORS:
-      return action.payload;
-    default: 
-      return state;
-  }
-}
+// export default function(state = initialState, action: any ) {
+//   switch(action.type) {
+//     case GET_ERRORS:
+//       return action.payload;
+//     default: 
+//       return state;
+//   }
+// }

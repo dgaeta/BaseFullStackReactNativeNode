@@ -19,9 +19,10 @@ import {
   TouchableHighlight,
   TextInput
 } from 'react-native';
+import {Navigation} from 'react-native-navigation';
 import { connect } from 'react-redux';
 
-import { registerUser } from '../../actions/authentication';
+import { registerUser } from '../../../actions/authenticationActions';
 
 export interface IRegisterProps {
   registerUser: (user: any) => void;
@@ -39,6 +40,7 @@ class Register extends Component<IRegisterProps, IRegisterState> {
 
   constructor(props: IRegisterProps) {
     super(props);
+    console.log('Register constructor');
 
     this.state = {
       name: '',
@@ -111,7 +113,7 @@ const mapStateToProps = (state: any) => ({
 // literally connects the Register component to redux’s store so that
 // dispatch is passed as a prop to Register and we can call it from
 // with Register's methods
-export default connect(mapStateToProps, { registerUser })(Register as any)
+export default connect()(Register as any)
 
 const styles = StyleSheet.create({
   callOptions: {

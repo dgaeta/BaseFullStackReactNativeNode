@@ -10,22 +10,22 @@ import React from 'react'
 import { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
-export interface CallDetailProps {
+export interface UserWithDescriptionProps {
   key: string,
   username: string;
   profileImageUrl: string;
   description: string;
 }
 
-export interface CallDetailState {
+export interface UserWithDescriptionState {
 }
 
-export default class UpcomingCallDetail extends Component<
-CallDetailProps,
-CallDetailState
+export default class UserWithDescription extends Component<
+UserWithDescriptionProps,
+UserWithDescriptionState
 > {
 
-  constructor(props: CallDetailProps) {
+  constructor(props: UserWithDescriptionProps) {
     super(props);
 
     this.state = {
@@ -35,10 +35,10 @@ CallDetailState
   render() {
     return (
       <View style={styles.rowCard}>
-        <Image
+        {/* <Image
           style={styles.image}
           source={require('../../assets/img/doge.png')}
-        />
+        /> */}
         <Text style={styles.font}>{this.props.username}</Text>
         <Text style={styles.font}>{this.props.description}</Text>
       </View>
@@ -48,13 +48,14 @@ CallDetailState
 
 const styles = StyleSheet.create({
   font: {
-    color: 'red'
+    color: 'white'
   },
   image: {
-    flex: 1,
-    borderRadius: 20,
+    borderRadius: 25,
     resizeMode: 'cover',
     backgroundColor: 'red',
+    width: 50,
+    height: 50
   },
   cardContainer: {
     flex: 1,
@@ -68,7 +69,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     alignItems: 'center',
     flexWrap: 'wrap',
-    fontSize: 10
+    margin: 5,
+    fontSize: 10,
+    width: 100
   },
   container: {
     flex: 1,

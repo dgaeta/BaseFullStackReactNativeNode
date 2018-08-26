@@ -1,5 +1,5 @@
 import { fetchApi } from "../../services/api";
-const Buffer: any = require('Buffer');
+// const Buffer: any = require('Buffer');
 /**
  * In charge of each network request for user.
  */
@@ -9,14 +9,14 @@ const Buffer: any = require('Buffer');
   return fetchApi(endPoints.create, payload, 'post');
  }
 
- export function authenticate(email: string, password: string): Promise<any> {
-   // todo authenticate input
-   return fetchApi(
-      endPoints.authenticate,
-      {},
-      'post',
-      {
-        Authortization: `Basic ${new Buffer(`${email}:${password}`).toString('base64')}`
-      }
-    );
- }
+//  export function authenticate(email: string, password: string): Promise<any> {
+//    // todo authenticate input
+//    return fetchApi(
+//       endPoints.authenticate,
+//       {},
+//       'post',
+//       {
+//         Authortization: `Basic ${new Buffer(`${email}:${password}`).toString('base64')}`
+//       }
+//     );
+//  }

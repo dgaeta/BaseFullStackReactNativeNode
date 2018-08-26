@@ -10,22 +10,22 @@ import React from 'react'
 import { Component } from 'react';
 import {Platform, StyleSheet, Text, View, Button, Image} from 'react-native';
 
-export interface UserWithDescriptionProps {
+export interface CallDetailProps {
   key: string,
   username: string;
   profileImageUrl: string;
   description: string;
 }
 
-export interface UserWithDescriptionState {
+export interface CallDetailState {
 }
 
-export default class UserWithDescription extends Component<
-UserWithDescriptionProps,
-UserWithDescriptionState
+export default class UpcomingCallDetail extends Component<
+CallDetailProps,
+CallDetailState
 > {
 
-  constructor(props: UserWithDescriptionProps) {
+  constructor(props: CallDetailProps) {
     super(props);
 
     this.state = {
@@ -35,10 +35,10 @@ UserWithDescriptionState
   render() {
     return (
       <View style={styles.rowCard}>
-        <Image
+        {/* <Image
           style={styles.image}
-          source={require('../../assets/img/doge.png')}
-        />
+          source={require('../../../assets/img/doge.png')}
+        /> */}
         <Text style={styles.font}>{this.props.username}</Text>
         <Text style={styles.font}>{this.props.description}</Text>
       </View>
@@ -48,14 +48,13 @@ UserWithDescriptionState
 
 const styles = StyleSheet.create({
   font: {
-    color: 'white'
+    color: 'red'
   },
   image: {
-    borderRadius: 25,
+    flex: 1,
+    borderRadius: 20,
     resizeMode: 'cover',
     backgroundColor: 'red',
-    width: 50,
-    height: 50
   },
   cardContainer: {
     flex: 1,
@@ -69,9 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     alignItems: 'center',
     flexWrap: 'wrap',
-    margin: 5,
-    fontSize: 10,
-    width: 100
+    fontSize: 10
   },
   container: {
     flex: 1,

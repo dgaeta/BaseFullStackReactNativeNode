@@ -4,8 +4,27 @@ import axios from 'axios';
 import { AsyncStorage } from "react-native"
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import * as actionTypes from './actionTypes';
 import setAuthToken from '../setAuthToken';
+
+/*
+Action Creators
+*/
+
+export function changeAppRoot(root) {
+  return {
+    type: actionTypes.ROOT_CHANGED, 
+    root: root
+  };
+}
+
+export function appInitialized() {
+  return async function(dispatch: any, getState: any) {
+    // since all business logic should be inside redux actions
+    // this is a good place to put your app initialization code
+    dispatch(changeAppRoot('hero.login'));
+  };
+}
 
  /**
   * This is an action creator. 
@@ -29,22 +48,15 @@ export function registerUser(user: any, history: any): (dispatch: any) => void {
         setAuthToken(token);
 
         const decoded = jwt_decode(token);
-        dispatch(setCurrentUser(decoded));
-        history.push('/');
+        AsyncStorage.setItem('decoded', JSON.stringify(decoded));
+        dispatch(changeAppRoot('after-login'));
       })
       .catch(err => {
         console.log(err);
-        dispatch({
-            type: GET_ERRORS,
-            payload: err.response.data
-        });
+        // dispatch({
+        //     type: GET_ERRORS,
+        //     payload: err.response.data
+        // });
       });
-  }
-}
-
-export const setCurrentUser = decoded => {
-  return {
-      type: SET_CURRENT_USER,
-      payload: decoded
   }
 }

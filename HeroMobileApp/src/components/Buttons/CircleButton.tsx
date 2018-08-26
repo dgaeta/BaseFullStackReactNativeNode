@@ -18,7 +18,7 @@ import {
   Modal,
   TouchableHighlight
 } from 'react-native';
-import { ModalContentType } from '../vidCalls/VidCalls';
+import { ModalContentType } from '../ModalContentType';
 
 export interface CircleButtonProps {
   title: string;
