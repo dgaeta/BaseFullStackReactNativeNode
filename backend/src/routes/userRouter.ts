@@ -49,7 +49,21 @@ function _registerCallBack(req, res): void {
             } else {
               newUser.password = hash;
               newUser.save().then(user =>{
-                res.json(user);
+
+                // Save is done. Create token and send back.
+                const payload = {
+                    id: user.id,
+                    name: user.name
+                }
+                jwt.sign(payload, 'secret', {}, (err, token) => {
+                    if(err) console.error('There is some error in token', err);
+                    else {
+                        res.json({
+                            success: true,
+                            token: `Bearer ${token}`
+                        });
+                    }
+                });
               })
             }
           })
